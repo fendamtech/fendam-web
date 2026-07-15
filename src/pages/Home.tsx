@@ -1,145 +1,158 @@
 import { Link } from 'react-router-dom'
-import { PRODUCTS, STATUS_META, CAPABILITIES, CONTACT, type Product } from '../data'
+import { PRODUCTS, STATUS_META, CAPABILITIES, CONTACT, productBySlug, type Product } from '../data'
+import { Reveal } from '../components/Reveal'
 
 export default function Home() {
   return (
     <main className="pt-16">
       <Hero />
-      <Stats />
-      <Capabilities />
+      <Marquee />
+      <Flagship />
       <Products />
-      <About />
-      <Contact />
+      <Capabilities />
+      <Approach />
+      <StatsBand />
+      <CTA />
     </main>
   )
 }
 
+/* ─── Hero ─────────────────────────────────────────────────────────────── */
 function Hero() {
   return (
     <section className="relative overflow-hidden">
-      {/* layered background: worldmap image + navy wash + glow */}
       <div className="pointer-events-none absolute inset-0 -z-10">
-        <img src="/graphic-worldmap-DN-mPD8L.jpg" alt="" className="absolute inset-0 w-full h-full object-cover opacity-[0.10]" />
-        <div className="absolute inset-0" style={{ background: 'radial-gradient(1000px 500px at 50% -10%, rgba(31,224,224,0.16), transparent 60%), radial-gradient(800px 400px at 80% 20%, rgba(157,123,255,0.14), transparent 60%)' }} />
+        <img src="/graphic-worldmap-DN-mPD8L.jpg" alt="" className="absolute inset-0 w-full h-full object-cover opacity-[0.09]" />
         <div className="absolute inset-0 grid-bg opacity-40" />
-        <div className="absolute inset-x-0 bottom-0 h-40" style={{ background: 'linear-gradient(to bottom, transparent, #060b18)' }} />
+        <div className="absolute inset-0" style={{ background: 'radial-gradient(900px 480px at 50% -8%, rgba(31,224,224,0.18), transparent 62%), radial-gradient(700px 420px at 82% 18%, rgba(157,123,255,0.16), transparent 60%)' }} />
+        <div className="absolute inset-x-0 bottom-0 h-48" style={{ background: 'linear-gradient(to bottom, transparent, #060b18)' }} />
       </div>
 
-      <div className="max-w-5xl mx-auto px-6 pt-20 pb-20 text-center">
-        <div className="fade-up inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold mb-7 card">
-          <span className="w-1.5 h-1.5 rounded-full" style={{ background: '#10b981' }} />
-          A security-first product studio, building for Africa
+      <div className="max-w-5xl mx-auto px-6 pt-24 pb-24 text-center">
+        <div className="fade-up inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-medium mb-8 hair">
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-60" style={{ background: '#10b981' }} />
+            <span className="relative inline-flex rounded-full h-2 w-2" style={{ background: '#10b981' }} />
+          </span>
+          <span className="text-white/75">FendAm Learn is live · first cohort August 2026</span>
         </div>
 
-        <h1 className="fade-up text-4xl sm:text-6xl font-black tracking-tight leading-[1.04]" style={{ animationDelay: '0.05s' }}>
-          Security, AI and fintech <br className="hidden sm:block" />
-          products Africa can <span className="grad-text">actually trust.</span>
+        <h1 className="fade-up text-[2.75rem] leading-[1.02] sm:text-6xl md:text-7xl font-bold tracking-tight" style={{ animationDelay: '0.05s' }}>
+          Security, AI and fintech<br />
+          <span className="grad-text">Africa can trust.</span>
         </h1>
 
-        <p className="fade-up max-w-2xl mx-auto mt-6 text-base sm:text-lg text-white/60 leading-relaxed" style={{ animationDelay: '0.1s' }}>
-          FendAm Technology builds products that solve real African problems — from fraud detection
-          to consumer safety — and trains the continent's next generation of cybersecurity talent.
+        <p className="fade-up max-w-xl mx-auto mt-7 text-base sm:text-lg text-white/60 leading-relaxed" style={{ animationDelay: '0.12s' }}>
+          FendAm Technology is a security-first product studio. We build products that solve real
+          African problems — and train the talent the continent needs to defend itself.
         </p>
 
-        <div className="fade-up flex flex-wrap items-center justify-center gap-3 mt-9" style={{ animationDelay: '0.15s' }}>
-          <a href="#products" className="px-6 py-3 rounded-xl text-sm font-bold text-[#060b18] transition-transform hover:scale-[1.03]"
-            style={{ background: 'linear-gradient(135deg,#1FE0E0,#9D7BFF)', boxShadow: '0 8px 30px rgba(31,224,224,0.25)' }}>
-            Explore our products
-          </a>
-          <Link to="/investors" className="px-6 py-3 rounded-xl text-sm font-semibold text-white/85 card">
-            For investors →
-          </Link>
+        <div className="fade-up flex flex-wrap items-center justify-center gap-3 mt-10" style={{ animationDelay: '0.18s' }}>
+          <a href="#products" className="px-6 py-3.5 rounded-xl text-sm btn-primary">Explore our products</a>
+          <Link to="/investors" className="px-6 py-3.5 rounded-xl text-sm font-semibold text-white/85 btn-ghost">For investors →</Link>
         </div>
-
-        {/* trust line */}
-        <p className="fade-up mt-10 text-xs uppercase tracking-[0.18em] text-white/30" style={{ animationDelay: '0.2s' }}>
-          Cybersecurity education · AI fraud detection · Consumer safety
-        </p>
       </div>
     </section>
   )
 }
 
-function Stats() {
-  const stats = [
-    { v: '3', l: 'Products in the portfolio' },
-    { v: '12wk', l: 'Flagship security bootcamp' },
-    { v: '2026', l: 'First paid academy cohort' },
-    { v: '100%', l: 'Built for the African market' },
-  ]
+/* ─── Domain marquee ───────────────────────────────────────────────────── */
+function Marquee() {
+  const items = ['Cybersecurity Education', 'AI Fraud Detection', 'Consumer Safety', 'Fintech Security', 'Threat Intelligence', 'Talent Development']
+  const row = [...items, ...items]
   return (
-    <section className="max-w-5xl mx-auto px-6 -mt-4">
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-        {stats.map((s) => (
-          <div key={s.l} className="rounded-2xl p-5 text-center card">
-            <div className="text-2xl md:text-3xl font-black grad-text">{s.v}</div>
-            <div className="text-xs text-white/50 mt-1.5 leading-snug">{s.l}</div>
-          </div>
-        ))}
+    <section className="border-y border-white/[0.06] py-5 overflow-hidden" style={{ background: 'rgba(255,255,255,0.015)' }}>
+      <div className="overflow-hidden" style={{ maskImage: 'linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent)', WebkitMaskImage: 'linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent)' }}>
+        <div className="marquee-track flex gap-10 whitespace-nowrap w-max">
+          {row.map((t, i) => (
+            <span key={i} className="text-sm font-medium text-white/35 flex items-center gap-10">
+              {t}
+              <span className="w-1 h-1 rounded-full bg-white/20" />
+            </span>
+          ))}
+        </div>
       </div>
     </section>
   )
 }
 
-function Capabilities() {
+/* ─── Featured flagship ────────────────────────────────────────────────── */
+function Flagship() {
+  const p = productBySlug('fendam-learn')!
   return (
-    <section className="max-w-6xl mx-auto px-6 pt-24">
-      <SectionHead eyebrow="What we do" title="Four disciplines, one security core" sub="Every product we ship draws on the same foundation." />
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 mt-10">
-        {CAPABILITIES.map((c, i) => (
-          <div key={c.title} className="rounded-2xl p-6 card fade-up" style={{ animationDelay: `${i * 0.07}s` }}>
-            <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style={{ background: 'rgba(31,224,224,0.08)', border: '1px solid rgba(31,224,224,0.15)' }}>
-              <img src={c.icon} alt="" className="w-7 h-7 object-contain" />
+    <section className="max-w-6xl mx-auto px-6 pt-28">
+      <Reveal>
+        <div className="rounded-3xl overflow-hidden card p-0">
+          <div className="grid md:grid-cols-2">
+            {/* copy */}
+            <div className="p-9 md:p-12 flex flex-col justify-center">
+              <span className="inline-flex items-center gap-1.5 text-[11px] font-bold px-2.5 py-1 rounded-full w-fit"
+                style={{ color: '#10b981', background: 'rgba(16,185,129,0.14)' }}>
+                <span className="w-1.5 h-1.5 rounded-full" style={{ background: '#10b981' }} /> LIVE FLAGSHIP
+              </span>
+              <h2 className="text-3xl md:text-4xl font-bold mt-4">FendAm Learn</h2>
+              <p className="text-white/60 mt-3 leading-relaxed">{p.summary}</p>
+              <div className="grid grid-cols-3 gap-3 mt-7">
+                {[['12wk', 'Structured track'], ['Sec+', 'Exam-aligned'], ['Live', 'Mentorship']].map(([a, b]) => (
+                  <div key={b}>
+                    <div className="text-xl font-bold grad-text">{a}</div>
+                    <div className="text-[11px] text-white/45 mt-0.5">{b}</div>
+                  </div>
+                ))}
+              </div>
+              <div className="flex flex-wrap gap-3 mt-8">
+                <a href={p.href} target="_blank" rel="noopener" className="px-5 py-3 rounded-xl text-sm btn-primary">Visit FendAm Learn →</a>
+                <Link to={`/products/${p.slug}`} className="px-5 py-3 rounded-xl text-sm font-semibold text-white/85 btn-ghost">Read more</Link>
+              </div>
             </div>
-            <h3 className="font-bold text-white">{c.title}</h3>
-            <p className="text-sm text-white/50 mt-2 leading-relaxed">{c.desc}</p>
+            {/* visual */}
+            <div className="relative min-h-[280px] md:min-h-full overflow-hidden">
+              <img src={p.image} alt="" className="absolute inset-0 w-full h-full object-cover opacity-60" />
+              <div className="absolute inset-0" style={{ background: 'linear-gradient(90deg, #0a1428 0%, transparent 40%), radial-gradient(circle at 70% 40%, rgba(31,224,224,0.28), transparent 55%)' }} />
+              <img src={p.icon} alt="" className="floaty absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 object-contain drop-shadow-2xl" />
+            </div>
           </div>
-        ))}
-      </div>
+        </div>
+      </Reveal>
     </section>
   )
 }
 
+/* ─── Portfolio ────────────────────────────────────────────────────────── */
 function Products() {
   return (
-    <section id="products" className="max-w-6xl mx-auto px-6 pt-24 scroll-mt-20">
-      <SectionHead eyebrow="Portfolio" title="Products we're building" sub="One live and in market, more on the way. Each solves a problem we've seen up close." />
-      <div className="grid gap-5 md:grid-cols-3 mt-10">
-        {PRODUCTS.map((p, i) => <ProductCard key={p.slug} p={p} i={i} />)}
+    <section id="products" className="max-w-6xl mx-auto px-6 pt-28 scroll-mt-24">
+      <Reveal><SectionHead eyebrow="Portfolio" title="What we're building" sub="One live and in market, more on the way — each solving a problem we've seen up close." /></Reveal>
+      <div className="grid gap-5 md:grid-cols-3 mt-12">
+        {PRODUCTS.map((p, i) => (
+          <Reveal key={p.slug} delay={i * 90}><ProductCard p={p} /></Reveal>
+        ))}
       </div>
     </section>
   )
 }
 
-function ProductCard({ p, i }: { p: Product; i: number }) {
+function ProductCard({ p }: { p: Product }) {
   const st = STATUS_META[p.status]
   return (
-    <Link to={`/products/${p.slug}`}
-      className="group relative rounded-2xl overflow-hidden flex flex-col card fade-up"
-      style={{ animationDelay: `${i * 0.08}s` }}>
-      {/* image banner */}
+    <Link to={`/products/${p.slug}`} className="group relative rounded-2xl overflow-hidden flex flex-col card p-0 h-full">
       <div className="relative h-32 overflow-hidden">
-        <img src={p.image} alt="" className="absolute inset-0 w-full h-full object-cover opacity-40 transition-transform duration-500 group-hover:scale-105" />
-        <div className="absolute inset-0" style={{ background: `linear-gradient(180deg, transparent, rgba(6,11,24,0.9)), radial-gradient(circle at 20% 30%, ${p.accent}33, transparent 60%)` }} />
-        <div className="absolute top-3 right-3">
-          <span className="inline-flex items-center gap-1.5 text-[11px] font-bold px-2.5 py-1 rounded-full backdrop-blur"
-            style={{ color: st.color, background: `${st.color}22` }}>
-            <span className="w-1.5 h-1.5 rounded-full" style={{ background: st.color }} />
-            {st.label}
-          </span>
-        </div>
-        <div className="absolute -bottom-6 left-5 w-12 h-12 rounded-xl flex items-center justify-center"
-          style={{ background: '#0a1428', border: `1px solid ${p.accent}44` }}>
+        <img src={p.image} alt="" className="absolute inset-0 w-full h-full object-cover opacity-40 transition-transform duration-700 group-hover:scale-110" />
+        <div className="absolute inset-0" style={{ background: `linear-gradient(180deg, transparent, rgba(6,11,24,0.92)), radial-gradient(circle at 22% 30%, ${p.accent}3a, transparent 60%)` }} />
+        <span className="absolute top-3 right-3 inline-flex items-center gap-1.5 text-[11px] font-bold px-2.5 py-1 rounded-full backdrop-blur"
+          style={{ color: st.color, background: `${st.color}22` }}>
+          <span className="w-1.5 h-1.5 rounded-full" style={{ background: st.color }} /> {st.label}
+        </span>
+        <div className="absolute -bottom-6 left-5 w-12 h-12 rounded-xl flex items-center justify-center hair">
           <img src={p.icon} alt="" className="w-7 h-7 object-contain" />
         </div>
       </div>
-
       <div className="p-6 pt-9 flex flex-col flex-1">
         <p className="text-[11px] font-semibold uppercase tracking-wider" style={{ color: p.accent }}>{p.domain}</p>
         <h3 className="text-lg font-bold mt-1">{p.name}</h3>
         <p className="text-sm text-white/50 mt-1">{p.tagline}</p>
         <p className="text-sm text-white/40 mt-3 leading-relaxed flex-1">{p.summary}</p>
-        <span className="mt-4 text-sm font-semibold flex items-center gap-1.5 transition-transform group-hover:translate-x-0.5" style={{ color: p.accent }}>
+        <span className="mt-5 text-sm font-semibold flex items-center gap-1.5 transition-transform group-hover:translate-x-0.5" style={{ color: p.accent }}>
           Learn more
           <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
         </span>
@@ -148,25 +161,51 @@ function ProductCard({ p, i }: { p: Product; i: number }) {
   )
 }
 
-function About() {
-  const values = [
-    { t: 'Local by design', d: 'We build for African realities — the fraud, the devices, the data costs, the threat landscape — not a Western template.' },
-    { t: 'Security at the core', d: 'Every product starts from a security mindset. It is our heritage and our unfair advantage.' },
-    { t: 'Talent as a product', d: 'FendAm Learn is how we grow the very skills the continent — and our own products — need.' },
+/* ─── Capabilities ─────────────────────────────────────────────────────── */
+function Capabilities() {
+  return (
+    <section className="max-w-6xl mx-auto px-6 pt-28">
+      <Reveal><SectionHead eyebrow="Capabilities" title="Four disciplines, one security core" sub="Every product we ship draws on the same foundation." /></Reveal>
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 mt-12">
+        {CAPABILITIES.map((c, i) => (
+          <Reveal key={c.title} delay={i * 80}>
+            <div className="rounded-2xl p-6 card h-full">
+              <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 hair">
+                <img src={c.icon} alt="" className="w-7 h-7 object-contain" />
+              </div>
+              <h3 className="font-bold text-white">{c.title}</h3>
+              <p className="text-sm text-white/50 mt-2 leading-relaxed">{c.desc}</p>
+            </div>
+          </Reveal>
+        ))}
+      </div>
+    </section>
+  )
+}
+
+/* ─── Approach ─────────────────────────────────────────────────────────── */
+function Approach() {
+  const steps = [
+    { n: '01', t: 'Local by design', d: 'We build for African realities — the fraud, the devices, the data costs, the threat landscape — not a Western template.' },
+    { n: '02', t: 'Security at the core', d: 'Every product starts from a security mindset. It is our heritage and our unfair advantage.' },
+    { n: '03', t: 'Talent as a product', d: 'FendAm Learn grows the very skills the continent — and our own products — need.' },
   ]
   return (
-    <section id="about" className="relative pt-24 scroll-mt-20 overflow-hidden">
+    <section id="about" className="relative pt-28 scroll-mt-24 overflow-hidden">
       <div className="pointer-events-none absolute inset-0 -z-10">
-        <img src="/graphic-cyberpunkcity-C_oqTtHT.jpg" alt="" className="absolute inset-0 w-full h-full object-cover opacity-[0.07]" />
+        <img src="/graphic-cyberpunkcity-C_oqTtHT.jpg" alt="" className="absolute inset-0 w-full h-full object-cover opacity-[0.06]" />
       </div>
       <div className="max-w-6xl mx-auto px-6">
-        <SectionHead eyebrow="About" title="A studio, not a single app" sub="FendAm Technology incubates and ships multiple products under one security-first roof." />
-        <div className="grid gap-5 md:grid-cols-3 mt-10">
-          {values.map((v) => (
-            <div key={v.t} className="rounded-2xl p-6 card">
-              <h3 className="font-bold text-white">{v.t}</h3>
-              <p className="text-sm text-white/50 mt-2 leading-relaxed">{v.d}</p>
-            </div>
+        <Reveal><SectionHead eyebrow="Our approach" title="A studio, not a single app" sub="FendAm Technology incubates and ships multiple products under one security-first roof." /></Reveal>
+        <div className="grid gap-5 md:grid-cols-3 mt-12">
+          {steps.map((s, i) => (
+            <Reveal key={s.t} delay={i * 90}>
+              <div className="rounded-2xl p-7 card h-full">
+                <div className="text-3xl font-bold grad-text">{s.n}</div>
+                <h3 className="font-bold text-white mt-3">{s.t}</h3>
+                <p className="text-sm text-white/50 mt-2 leading-relaxed">{s.d}</p>
+              </div>
+            </Reveal>
           ))}
         </div>
       </div>
@@ -174,27 +213,50 @@ function About() {
   )
 }
 
-function Contact() {
+/* ─── Stats band ───────────────────────────────────────────────────────── */
+function StatsBand() {
+  const stats = [
+    { v: '3', l: 'Products in the portfolio' },
+    { v: '12wk', l: 'Flagship bootcamp' },
+    { v: '2026', l: 'First paid cohort' },
+    { v: '100%', l: 'Built for Africa' },
+  ]
   return (
-    <section id="contact" className="max-w-6xl mx-auto px-6 pt-24 scroll-mt-20">
-      <div className="rounded-3xl p-10 md:p-14 text-center relative overflow-hidden card">
-        <div className="pointer-events-none absolute inset-0 -z-10">
-          <div className="absolute inset-0" style={{ background: 'radial-gradient(600px 300px at 50% 0%, rgba(31,224,224,0.14), transparent 60%), radial-gradient(500px 300px at 80% 100%, rgba(157,123,255,0.12), transparent 60%)' }} />
+    <section className="max-w-6xl mx-auto px-6 pt-28">
+      <Reveal>
+        <div className="rounded-3xl p-10 md:p-12 hair">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            {stats.map((s) => (
+              <div key={s.l}>
+                <div className="text-4xl md:text-5xl font-bold grad-text">{s.v}</div>
+                <div className="text-xs text-white/50 mt-2">{s.l}</div>
+              </div>
+            ))}
+          </div>
         </div>
-        <h2 className="text-2xl md:text-3xl font-black">Let's build something secure together</h2>
-        <p className="text-white/60 mt-3 max-w-xl mx-auto">
-          Partnerships, pilots, press, or joining the team — we'd love to hear from you.
-        </p>
-        <div className="flex flex-wrap items-center justify-center gap-3 mt-7">
-          <a href={`mailto:${CONTACT.email}`} className="px-6 py-3 rounded-xl text-sm font-bold text-[#060b18]"
-            style={{ background: 'linear-gradient(135deg,#1FE0E0,#9D7BFF)' }}>
-            {CONTACT.email}
-          </a>
-          <Link to="/investors" className="px-6 py-3 rounded-xl text-sm font-semibold text-white/85 card">
-            Investor information
-          </Link>
+      </Reveal>
+    </section>
+  )
+}
+
+/* ─── CTA ──────────────────────────────────────────────────────────────── */
+function CTA() {
+  return (
+    <section id="contact" className="max-w-6xl mx-auto px-6 pt-28 scroll-mt-24">
+      <Reveal>
+        <div className="rounded-3xl p-12 md:p-16 text-center relative overflow-hidden card">
+          <div className="pointer-events-none absolute inset-0 -z-10">
+            <div className="absolute inset-0 grid-bg opacity-30" />
+            <div className="absolute inset-0" style={{ background: 'radial-gradient(700px 320px at 50% 0%, rgba(31,224,224,0.16), transparent 60%), radial-gradient(500px 320px at 82% 100%, rgba(157,123,255,0.14), transparent 60%)' }} />
+          </div>
+          <h2 className="text-3xl md:text-4xl font-bold">Let's build something secure together</h2>
+          <p className="text-white/60 mt-4 max-w-xl mx-auto">Partnerships, pilots, press, or joining the team — we'd love to hear from you.</p>
+          <div className="flex flex-wrap items-center justify-center gap-3 mt-8">
+            <a href={`mailto:${CONTACT.email}`} className="px-6 py-3.5 rounded-xl text-sm btn-primary">{CONTACT.email}</a>
+            <Link to="/investors" className="px-6 py-3.5 rounded-xl text-sm font-semibold text-white/85 btn-ghost">Investor information</Link>
+          </div>
         </div>
-      </div>
+      </Reveal>
     </section>
   )
 }
@@ -202,9 +264,9 @@ function Contact() {
 export function SectionHead({ eyebrow, title, sub }: { eyebrow: string; title: string; sub?: string }) {
   return (
     <div className="max-w-2xl">
-      <p className="text-xs font-bold uppercase tracking-[0.2em] grad-text">{eyebrow}</p>
-      <h2 className="text-2xl md:text-4xl font-black mt-2 tracking-tight">{title}</h2>
-      {sub && <p className="text-white/55 mt-3 leading-relaxed">{sub}</p>}
+      <p className="text-xs font-bold uppercase tracking-[0.22em] grad-text">{eyebrow}</p>
+      <h2 className="text-3xl md:text-4xl font-bold mt-3 tracking-tight">{title}</h2>
+      {sub && <p className="text-white/55 mt-4 leading-relaxed">{sub}</p>}
     </div>
   )
 }

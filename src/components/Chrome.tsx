@@ -56,15 +56,14 @@ export function Nav() {
           </span>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-7">
+        <nav className="hidden md:flex items-center gap-8">
           {LINKS.map((l) => (
-            <a key={l.label} href={l.to} className="text-sm text-white/60 hover:text-white transition-colors">
+            <a key={l.label} href={l.to} className="navlink text-sm text-white/60 hover:text-white transition-colors">
               {l.label}
             </a>
           ))}
           <a href={CONTACT.learn} target="_blank" rel="noopener"
-            className="text-sm font-semibold px-4 py-2 rounded-xl text-[#060b18] transition-transform hover:scale-[1.03]"
-            style={{ background: 'linear-gradient(135deg,#1FE0E0,#9D7BFF)' }}>
+            className="text-sm px-4 py-2 rounded-xl btn-primary">
             FendAm Learn
           </a>
         </nav>
