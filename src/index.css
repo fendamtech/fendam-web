@@ -2,34 +2,53 @@
 
 :root {
   color-scheme: dark;
+  /* Brand palette — cyan + navy, with logo-purple as the complementary accent */
+  --bg: #060b18;         /* deep navy base */
+  --bg-2: #0a1428;       /* raised navy surface */
+  --cyan: #1fe0e0;
+  --purple: #9d7bff;
+  --blue: #3b82f6;
 }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
-  background: #05070d;
+  background: var(--bg);
   color: #fff;
   font-family: Inter, system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(16px); }
+  from { opacity: 0; transform: translateY(18px); }
   to { opacity: 1; transform: translateY(0); }
 }
-@keyframes glow {
-  0%, 100% { opacity: 0.5; }
-  50% { opacity: 1; }
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }
 .fade-up { animation: fadeUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) both; }
+.floaty { animation: floaty 6s ease-in-out infinite; }
 
-/* Gradient text helper */
 .grad-text {
-  background: linear-gradient(135deg, #1FE0E0, #9D7BFF);
+  background: linear-gradient(135deg, var(--cyan), var(--purple));
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+/* Subtle grid texture behind sections */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(31, 224, 224, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(157, 123, 255, 0.04) 1px, transparent 1px);
+  background-size: 46px 46px;
+}
+
+.card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.02));
+  border: 1px solid rgba(255,255,255,0.08);
+  backdrop-filter: blur(6px);
+}
+.card:hover { border-color: rgba(31, 224, 224, 0.3); }

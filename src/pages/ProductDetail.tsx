@@ -22,15 +22,18 @@ export default function ProductDetail() {
       {/* Hero */}
       <section className="relative overflow-hidden">
         <div className="pointer-events-none absolute inset-0 -z-10">
-          <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[520px] h-[520px] rounded-full blur-[120px] opacity-20"
-            style={{ background: p.accent }} />
+          <img src={p.image} alt="" className="absolute inset-0 w-full h-full object-cover opacity-[0.12]" />
+          <div className="absolute inset-0" style={{ background: `radial-gradient(800px 400px at 30% 0%, ${p.accent}26, transparent 60%)` }} />
+          <div className="absolute inset-x-0 bottom-0 h-32" style={{ background: 'linear-gradient(to bottom, transparent, #060b18)' }} />
         </div>
         <div className="max-w-4xl mx-auto px-6 pt-8">
           <Link to="/#products" className="text-sm text-white/40 hover:text-white">← All products</Link>
 
           <div className="flex items-center gap-3 mt-6">
-            <div className="w-14 h-14 rounded-2xl flex items-center justify-center font-black text-2xl"
-              style={{ background: `${p.accent}1f`, color: p.accent }}>{p.name[0]}</div>
+            <div className="w-14 h-14 rounded-2xl flex items-center justify-center"
+              style={{ background: `${p.accent}1a`, border: `1px solid ${p.accent}44` }}>
+              <img src={p.icon} alt="" className="w-8 h-8 object-contain" />
+            </div>
             <span className="inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1 rounded-full"
               style={{ color: st.color, background: `${st.color}18` }}>
               <span className="w-1.5 h-1.5 rounded-full" style={{ background: st.color }} />
@@ -45,13 +48,13 @@ export default function ProductDetail() {
 
           <div className="flex flex-wrap gap-3 mt-7">
             {isLive && p.href && (
-              <a href={p.href} target="_blank" rel="noopener" className="px-6 py-3 rounded-xl text-sm font-bold text-[#05070D]"
+              <a href={p.href} target="_blank" rel="noopener" className="px-6 py-3 rounded-xl text-sm font-bold text-[#060b18]"
                 style={{ background: `linear-gradient(135deg,#1FE0E0,#9D7BFF)` }}>
                 Visit {p.name} →
               </a>
             )}
             {!isLive && (
-              <Link to="/investors" className="px-6 py-3 rounded-xl text-sm font-bold text-[#05070D]"
+              <Link to="/investors" className="px-6 py-3 rounded-xl text-sm font-bold text-[#060b18]"
                 style={{ background: `linear-gradient(135deg,#1FE0E0,#9D7BFF)` }}>
                 Investor information
               </Link>

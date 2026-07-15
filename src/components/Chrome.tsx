@@ -12,7 +12,7 @@ export function Logo({ size = 32 }: { size?: number }) {
         </linearGradient>
       </defs>
       <rect width="32" height="32" rx="8" fill="url(#fg)" />
-      <path d="M9 8h13v3.5H12.5v4H20v3.5h-7.5V24H9V8Z" fill="#05070D" />
+      <path d="M9 8h13v3.5H12.5v4H20v3.5h-7.5V24H9V8Z" fill="#060b18" />
     </svg>
   )
 }
@@ -43,7 +43,7 @@ export function Nav() {
     <header
       className="fixed top-0 inset-x-0 z-50 transition-all"
       style={{
-        background: scrolled ? 'rgba(5,7,13,0.85)' : 'transparent',
+        background: scrolled ? 'rgba(6,11,24,0.85)' : 'transparent',
         backdropFilter: scrolled ? 'blur(14px)' : 'none',
         borderBottom: scrolled ? '1px solid rgba(255,255,255,0.06)' : '1px solid transparent',
       }}
@@ -63,7 +63,7 @@ export function Nav() {
             </a>
           ))}
           <a href={CONTACT.learn} target="_blank" rel="noopener"
-            className="text-sm font-semibold px-4 py-2 rounded-xl text-[#05070D] transition-transform hover:scale-[1.03]"
+            className="text-sm font-semibold px-4 py-2 rounded-xl text-[#060b18] transition-transform hover:scale-[1.03]"
             style={{ background: 'linear-gradient(135deg,#1FE0E0,#9D7BFF)' }}>
             FendAm Learn
           </a>
@@ -77,13 +77,13 @@ export function Nav() {
       </div>
 
       {open && (
-        <div className="md:hidden px-6 pb-4 pt-1 space-y-1" style={{ background: 'rgba(5,7,13,0.97)', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+        <div className="md:hidden px-6 pb-4 pt-1 space-y-1" style={{ background: 'rgba(6,11,24,0.97)', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
           {LINKS.map((l) => (
             <a key={l.label} href={l.to} onClick={() => setOpen(false)} className="block py-2.5 text-sm text-white/70 hover:text-white">
               {l.label}
             </a>
           ))}
-          <a href={CONTACT.learn} target="_blank" rel="noopener" className="block mt-2 text-center text-sm font-semibold px-4 py-2.5 rounded-xl text-[#05070D]"
+          <a href={CONTACT.learn} target="_blank" rel="noopener" className="block mt-2 text-center text-sm font-semibold px-4 py-2.5 rounded-xl text-[#060b18]"
             style={{ background: 'linear-gradient(135deg,#1FE0E0,#9D7BFF)' }}>
             Go to FendAm Learn
           </a>
