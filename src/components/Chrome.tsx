@@ -5,13 +5,7 @@ import { CONTACT } from '../data'
 export function Logo({ size = 32 }: { size?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="fg" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor="#1FE0E0" />
-          <stop offset="100%" stopColor="#9D7BFF" />
-        </linearGradient>
-      </defs>
-      <rect width="32" height="32" rx="8" fill="url(#fg)" />
+      <rect width="32" height="32" rx="8" fill="#1FE0E0" />
       <path d="M9 8h13v3.5H12.5v4H20v3.5h-7.5V24H9V8Z" fill="#060b18" />
     </svg>
   )
@@ -83,7 +77,7 @@ export function Nav() {
             </a>
           ))}
           <a href={CONTACT.learn} target="_blank" rel="noopener" className="block mt-2 text-center text-sm font-semibold px-4 py-2.5 rounded-xl text-[#060b18]"
-            style={{ background: 'linear-gradient(135deg,#1FE0E0,#9D7BFF)' }}>
+            style={{ background: '#1FE0E0' }}>
             Go to FendAm Learn
           </a>
         </div>

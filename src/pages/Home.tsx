@@ -23,7 +23,7 @@ function Hero() {
       <div className="pointer-events-none absolute inset-0 -z-10">
         <img src="/graphic-worldmap-DN-mPD8L.jpg" alt="" className="absolute inset-0 w-full h-full object-cover opacity-[0.09]" />
         <div className="absolute inset-0 grid-bg opacity-40" />
-        <div className="absolute inset-0" style={{ background: 'radial-gradient(900px 480px at 50% -8%, rgba(31,224,224,0.18), transparent 62%), radial-gradient(700px 420px at 82% 18%, rgba(157,123,255,0.16), transparent 60%)' }} />
+        <div className="absolute inset-0" style={{ background: 'radial-gradient(900px 460px at 50% -10%, rgba(31,224,224,0.16), transparent 60%)' }} />
         <div className="absolute inset-x-0 bottom-0 h-48" style={{ background: 'linear-gradient(to bottom, transparent, #060b18)' }} />
       </div>
 
@@ -252,7 +252,7 @@ function CTA() {
         <div className="rounded-3xl p-12 md:p-16 text-center relative overflow-hidden card">
           <div className="pointer-events-none absolute inset-0 -z-10">
             <div className="absolute inset-0 grid-bg opacity-30" />
-            <div className="absolute inset-0" style={{ background: 'radial-gradient(700px 320px at 50% 0%, rgba(31,224,224,0.16), transparent 60%), radial-gradient(500px 320px at 82% 100%, rgba(157,123,255,0.14), transparent 60%)' }} />
+            <div className="absolute inset-0" style={{ background: 'radial-gradient(700px 320px at 50% 0%, rgba(31,224,224,0.14), transparent 60%)' }} />
           </div>
           <h2 className="text-3xl md:text-4xl font-bold">Work with the group</h2>
           <p className="text-white/60 mt-4 max-w-xl mx-auto">A security assessment, a product build, training for your team, or a partnership — start a conversation.</p>

@@ -5,8 +5,7 @@
   --bg: #060b18;
   --bg-2: #0a1428;
   --cyan: #1fe0e0;
-  --purple: #9d7bff;
-  --blue: #3b82f6;
+  --navy: #0a1428;
   --font-display: 'Space Grotesk', 'Inter', system-ui, sans-serif;
   --font-body: 'Inter', system-ui, -apple-system, sans-serif;
 }
@@ -51,16 +50,14 @@ h1, h2, h3, .display {
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1); }
 .reveal.in { opacity: 1; transform: none; }
 
-.grad-text {
-  background: linear-gradient(120deg, #7ff4f4, var(--cyan) 30%, var(--purple) 80%);
-  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
-}
+/* solid brand accent (no gradient) */
+.grad-text { color: var(--cyan); }
 
 /* animated grid backdrop */
 .grid-bg {
   background-image:
     linear-gradient(rgba(31,224,224,0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(157,123,255,0.05) 1px, transparent 1px);
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
   background-size: 46px 46px;
   animation: gridpan 18s linear infinite;
 }
@@ -75,22 +72,20 @@ h1, h2, h3, .display {
 }
 .card:hover { border-color: rgba(31,224,224,0.32); box-shadow: 0 20px 50px -20px rgba(31,224,224,0.15); }
 
-/* gradient hairline border wrapper */
+/* subtle bordered surface (solid, no gradient) */
 .hair {
-  background:
-    linear-gradient(var(--bg-2), var(--bg-2)) padding-box,
-    linear-gradient(135deg, rgba(31,224,224,0.5), rgba(157,123,255,0.5)) border-box;
-  border: 1px solid transparent;
+  background: var(--bg-2);
+  border: 1px solid rgba(31,224,224,0.22);
 }
 
-/* buttons */
+/* buttons — solid cyan */
 .btn-primary {
-  background: linear-gradient(135deg, var(--cyan), var(--purple));
+  background: var(--cyan);
   color: #060b18; font-weight: 700;
-  box-shadow: 0 10px 34px -10px rgba(31,224,224,0.5);
-  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 10px 28px -14px rgba(31,224,224,0.65);
+  transition: transform 0.2s, background 0.2s;
 }
-.btn-primary:hover { transform: translateY(-1px); box-shadow: 0 16px 40px -12px rgba(157,123,255,0.55); }
+.btn-primary:hover { transform: translateY(-1px); background: #45e8e8; }
 .btn-ghost {
   background: rgba(255,255,255,0.04);
   border: 1px solid rgba(255,255,255,0.12);
@@ -102,6 +97,6 @@ h1, h2, h3, .display {
 .navlink { position: relative; }
 .navlink::after {
   content: ""; position: absolute; left: 0; bottom: -4px; height: 1.5px; width: 0;
-  background: linear-gradient(90deg, var(--cyan), var(--purple)); transition: width 0.25s;
+  background: var(--cyan); transition: width 0.25s;
 }
 .navlink:hover::after { width: 100%; }

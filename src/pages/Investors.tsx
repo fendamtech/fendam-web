@@ -20,7 +20,7 @@ export default function Investors() {
 
         <div className="flex flex-wrap gap-3 mt-8">
           <a href={mailto('Investor enquiry — FendAm Technology')} className="px-6 py-3 rounded-xl text-sm font-bold text-[#060b18]"
-            style={{ background: 'linear-gradient(135deg,#1FE0E0,#9D7BFF)' }}>
+            style={{ background: '#1FE0E0' }}>
             Request the data room
           </a>
           <a href={CONTACT.learn} target="_blank" rel="noopener" className="px-6 py-3 rounded-xl text-sm font-semibold text-white/80"
@@ -66,7 +66,7 @@ export default function Investors() {
                 <div className="flex items-center gap-2">
                   <Link to={`/products/${p.slug}`} className="text-sm text-white/70 hover:text-white px-3 py-2">Overview</Link>
                   {p.pitchDeck ? (
-                    <a href={p.pitchDeck} target="_blank" rel="noopener" className="text-sm font-semibold px-4 py-2 rounded-lg text-[#060b18]" style={{ background: `linear-gradient(135deg,#1FE0E0,#9D7BFF)` }}>
+                    <a href={p.pitchDeck} target="_blank" rel="noopener" className="text-sm font-semibold px-4 py-2 rounded-lg text-[#060b18]" style={{ background: `#1FE0E0` }}>
                       View deck
                     </a>
                   ) : (
@@ -82,11 +82,11 @@ export default function Investors() {
       </section>
 
       <section className="max-w-4xl mx-auto px-6 mt-16">
-        <div className="rounded-3xl p-10 text-center" style={{ background: 'linear-gradient(135deg, rgba(31,224,224,0.08), rgba(157,123,255,0.08))', border: '1px solid rgba(255,255,255,0.1)' }}>
+        <div className="rounded-3xl p-10 text-center" style={{ background: 'rgba(31,224,224,0.06)', border: '1px solid rgba(255,255,255,0.1)' }}>
           <h2 className="text-2xl font-black">Let's talk</h2>
           <p className="text-white/55 mt-2">Reach the founder directly.</p>
           <a href={mailto('Investor enquiry — FendAm Technology')} className="inline-block mt-6 px-6 py-3 rounded-xl text-sm font-bold text-[#060b18]"
-            style={{ background: 'linear-gradient(135deg,#1FE0E0,#9D7BFF)' }}>
+            style={{ background: '#1FE0E0' }}>
             {CONTACT.email}
           </a>
         </div>

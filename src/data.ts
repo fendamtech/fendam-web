@@ -49,7 +49,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Real-time fraud detection for African fintech',
     status: 'development',
     domain: 'AI · Fintech Security',
-    accent: '#9D7BFF',
+    accent: '#1FE0E0',
     icon: '/icon-radar-Dsc-YKit.png',
     image: '/graphic-hud-D3uRmf43.jpg',
     summary:
@@ -73,7 +73,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Personal digital safety for everyday Africans',
     status: 'development',
     domain: 'Consumer Security',
-    accent: '#3B82F6',
+    accent: '#1FE0E0',
     icon: '/icon-shield.png',
     image: '/graphic-mesh-JHfNOjxi.jpg',
     summary:
@@ -96,9 +96,9 @@ export const PRODUCTS: Product[] = [
 export const productBySlug = (slug: string) => PRODUCTS.find((p) => p.slug === slug)
 
 export const STATUS_META: Record<Status, { label: string; color: string }> = {
-  live: { label: 'Live', color: '#10b981' },
-  development: { label: 'In Development', color: '#f59e0b' },
-  research: { label: 'Research', color: '#9D7BFF' },
+  live: { label: 'Live', color: '#1FE0E0' },
+  development: { label: 'In Development', color: '#64748b' },
+  research: { label: 'Research', color: '#1FE0E0' },
 }
 
 export const CONTACT = {
@@ -134,7 +134,7 @@ export const DIVISIONS: Division[] = [
     id: 'ai',
     name: 'FendAm AI',
     kicker: 'Applied AI & Software Engineering',
-    accent: '#9D7BFF',
+    accent: '#1FE0E0',
     icon: '/icon-terminal2-CUb_aLPr.png',
     image: '/graphic-mesh-JHfNOjxi.jpg',
     lead: 'The engineering core of the group. FendAm AI builds the models and software the rest of the company runs on — starting with FraudNet AI, our fraud-detection engine trained on African transaction patterns. We also take on select client builds: risk systems, data pipelines and custom software designed for real-world constraints like low bandwidth and mobile-first users.',
@@ -145,7 +145,7 @@ export const DIVISIONS: Division[] = [
     id: 'learn',
     name: 'FendAm Learn',
     kicker: 'Cybersecurity Education & Training',
-    accent: '#10b981',
+    accent: '#1FE0E0',
     icon: '/icon-cert-DD4R6xej.png',
     image: '/graphic-hexgrid-Cn_x5Oh3.jpg',
     lead: 'Talent is the continent’s real bottleneck, so we treat it as a product. FendAm Learn is a hands-on cybersecurity academy that takes beginners to job-ready in twelve weeks — interactive labs, live mentorship and a direct path to CompTIA Security+. We also deliver private, tailored training to organisations that need to upskill their own teams.',
@@ -156,7 +156,7 @@ export const DIVISIONS: Division[] = [
     id: 'digital',
     name: 'FendAm Digital',
     kicker: 'Brand & Digital Management',
-    accent: '#3B82F6',
+    accent: '#1FE0E0',
     icon: '/icon-mobile-C9r5lP8j.png',
     image: '/graphic-cyberpunkcity-C_oqTtHT.jpg',
     lead: 'A full-service digital arm for organisations that want their brand built and their presence secured in one place. We handle brand, web and digital management end-to-end — then wrap it in the same security standards the rest of the group lives by, so clients never have to choose between looking good and being safe.',

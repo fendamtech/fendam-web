@@ -49,13 +49,13 @@ export default function ProductDetail() {
           <div className="flex flex-wrap gap-3 mt-7">
             {isLive && p.href && (
               <a href={p.href} target="_blank" rel="noopener" className="px-6 py-3 rounded-xl text-sm font-bold text-[#060b18]"
-                style={{ background: `linear-gradient(135deg,#1FE0E0,#9D7BFF)` }}>
+                style={{ background: `#1FE0E0` }}>
                 Visit {p.name} →
               </a>
             )}
             {!isLive && (
               <Link to="/investors" className="px-6 py-3 rounded-xl text-sm font-bold text-[#060b18]"
-                style={{ background: `linear-gradient(135deg,#1FE0E0,#9D7BFF)` }}>
+                style={{ background: `#1FE0E0` }}>
                 Investor information
               </Link>
             )}
