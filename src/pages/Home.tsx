@@ -42,7 +42,7 @@ function Hero() {
         </h1>
 
         <p className="fade-up max-w-2xl mx-auto mt-7 text-base sm:text-lg text-white/60 leading-relaxed" style={{ animationDelay: '0.12s' }}>
-          FendAm Technology is a diversified, security-first group operating across four divisions —
+          FendAm Technology is a diversified, security-first group operating across four divisions:
           security, applied AI, education and digital. We build and run our own products, and bring
           that operator’s edge to every client we serve.
         </p>
@@ -75,20 +75,23 @@ function Clients() {
 /* ─── Who we are ───────────────────────────────────────────────────────── */
 function WhoWeAre() {
   const pillars = [
-    { k: 'Operators, not just advisors', d: 'We build, ship and run our own products — so our advice is grounded in what actually works.' },
+    { k: 'Operators, not just advisors', d: 'We build, ship and run our own products, so our advice is grounded in what actually works.' },
     { k: 'Security in everything', d: 'Every division answers to the same security standard our consulting team sets for clients.' },
-    { k: 'Built for African realities', d: 'Local fraud, mobile-first users, real bandwidth and cost constraints — designed in from day one.' },
+    { k: 'Built for African realities', d: 'Local fraud, mobile-first users, real bandwidth and cost constraints, designed in from day one.' },
   ]
   return (
     <section id="company" className="max-w-6xl mx-auto px-6 pt-28 scroll-mt-24">
       <Reveal>
         <div className="grid md:grid-cols-2 gap-10 items-start">
           <div>
-            <p className="text-xs font-bold uppercase tracking-[0.22em] grad-text">Who we are</p>
-            <h2 className="text-3xl md:text-4xl font-bold mt-3 tracking-tight leading-tight">A diversified technology group, built security-first.</h2>
+            <p className="mono text-[11px] font-semibold uppercase tracking-[0.25em] grad-text flex items-center gap-2.5">
+              <span className="inline-block w-5 h-px" style={{ background: 'currentColor', opacity: 0.6 }} />
+              Who we are
+            </p>
+            <h2 className="text-3xl md:text-4xl font-bold mt-4 tracking-tight leading-tight">A diversified technology group, built security-first.</h2>
           </div>
-          <p className="text-white/60 leading-relaxed md:pt-10">
-            FendAm Technology operates across four divisions — security, AI, education and digital. We don’t
+          <p className="text-white/60 leading-relaxed md:pt-10 prose-justify">
+            FendAm Technology operates across four divisions: security, AI, education and digital. We don’t
             just consult; we build, ship and run our own products, and bring that operator’s mindset to every
             engagement. One team, one standard, applied wherever the work takes us.
           </p>
@@ -112,7 +115,7 @@ function WhoWeAre() {
 function Divisions() {
   return (
     <section id="divisions" className="max-w-6xl mx-auto px-6 pt-28 scroll-mt-24">
-      <Reveal><SectionHead eyebrow="Divisions" title="Four divisions, one security standard" sub="Each division stands on its own — and reinforces the rest. Together they cover the full spectrum of what a modern African organisation needs." /></Reveal>
+      <Reveal><SectionHead eyebrow="Divisions" title="Four divisions, one security standard" sub="Each division stands on its own, and reinforces the rest. Together they cover the full spectrum of what a modern African organisation needs." /></Reveal>
       <div className="mt-16 space-y-16 md:space-y-24">
         {DIVISIONS.map((d, i) => <DivisionRow key={d.id} d={d} flip={i % 2 === 1} index={i} />)}
       </div>
@@ -130,10 +133,10 @@ function DivisionRow({ d, flip, index }: { d: Division; flip: boolean; index: nu
             <div className="w-11 h-11 rounded-xl flex items-center justify-center hair">
               <img src={d.icon} alt="" className="w-6 h-6 object-contain" />
             </div>
-            <span className="text-[11px] font-bold uppercase tracking-wider" style={{ color: d.accent }}>{`0${index + 1} · ${d.kicker}`}</span>
+            <span className="mono text-[11px] font-semibold uppercase tracking-[0.18em]" style={{ color: d.accent }}>{`0${index + 1} / ${d.kicker}`}</span>
           </div>
           <h3 className="text-2xl md:text-3xl font-bold mt-4">{d.name}</h3>
-          <p className="text-white/60 mt-4 leading-relaxed">{d.lead}</p>
+          <p className="text-white/60 mt-4 leading-relaxed prose-justify">{d.lead}</p>
           <div className="grid grid-cols-2 gap-x-6 gap-y-2.5 mt-6">
             {d.capabilities.map((c) => (
               <div key={c} className="flex items-start gap-2">
@@ -175,7 +178,7 @@ function DivisionRow({ d, flip, index }: { d: Division; flip: boolean; index: nu
 function Products() {
   return (
     <section id="products" className="max-w-6xl mx-auto px-6 pt-28 scroll-mt-24">
-      <Reveal><SectionHead eyebrow="Products" title="What the group ships" sub="Our divisions don’t just serve clients — they build products. Here’s what we’ve put into the world." /></Reveal>
+      <Reveal><SectionHead eyebrow="Products" title="What the group ships" sub="Our divisions don’t just serve clients, they build products. Here’s what we’ve put into the world." /></Reveal>
       <div className="grid gap-5 md:grid-cols-3 mt-12">
         {PRODUCTS.map((p, i) => (
           <Reveal key={p.slug} delay={i * 90}><ProductCard p={p} /></Reveal>
@@ -217,9 +220,9 @@ function ProductCard({ p }: { p: Product }) {
 /* ─── Principles ───────────────────────────────────────────────────────── */
 function Principles() {
   const steps = [
-    { n: '01', t: 'Local by design', d: 'We build for African realities — the fraud, the devices, the data costs, the threat landscape — not a Western template.' },
+    { n: '01', t: 'Local by design', d: 'We build for African realities, the fraud, the devices, the data costs, the threat landscape, not a Western template.' },
     { n: '02', t: 'Security at the core', d: 'Every engagement starts from a security mindset. It is our heritage and our unfair advantage.' },
-    { n: '03', t: 'One standard, everywhere', d: 'Whether we’re teaching, building or defending, the bar is the same — the one our security team sets.' },
+    { n: '03', t: 'One standard, everywhere', d: 'Whether we’re teaching, building or defending, the bar is the same, the one our security team sets.' },
   ]
   return (
     <section className="relative pt-28 overflow-hidden">
@@ -255,7 +258,7 @@ function CTA() {
             <div className="absolute inset-0" style={{ background: 'radial-gradient(700px 320px at 50% 0%, rgba(31,224,224,0.14), transparent 60%)' }} />
           </div>
           <h2 className="text-3xl md:text-4xl font-bold">Work with the group</h2>
-          <p className="text-white/60 mt-4 max-w-xl mx-auto">A security assessment, a product build, training for your team, or a partnership — start a conversation.</p>
+          <p className="text-white/60 mt-4 max-w-xl mx-auto">A security assessment, a product build, training for your team, or a partnership, start a conversation.</p>
           <div className="flex flex-wrap items-center justify-center gap-3 mt-8">
             <a href={`mailto:${CONTACT.email}`} className="px-6 py-3.5 rounded-xl text-sm btn-primary">{CONTACT.email}</a>
             <Link to="/investors" className="px-6 py-3.5 rounded-xl text-sm font-semibold text-white/85 btn-ghost">Investor information</Link>
@@ -269,9 +272,12 @@ function CTA() {
 export function SectionHead({ eyebrow, title, sub }: { eyebrow: string; title: string; sub?: string }) {
   return (
     <div className="max-w-2xl">
-      <p className="text-xs font-bold uppercase tracking-[0.22em] grad-text">{eyebrow}</p>
-      <h2 className="text-3xl md:text-4xl font-bold mt-3 tracking-tight">{title}</h2>
-      {sub && <p className="text-white/55 mt-4 leading-relaxed">{sub}</p>}
+      <p className="mono text-[11px] font-semibold uppercase tracking-[0.25em] grad-text flex items-center gap-2.5">
+        <span className="inline-block w-5 h-px" style={{ background: 'currentColor', opacity: 0.6 }} />
+        {eyebrow}
+      </p>
+      <h2 className="text-3xl md:text-4xl font-bold mt-4 tracking-tight">{title}</h2>
+      {sub && <p className="text-white/55 mt-4 leading-relaxed prose-justify">{sub}</p>}
     </div>
   )
 }

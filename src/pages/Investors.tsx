@@ -8,18 +8,21 @@ export default function Investors() {
   return (
     <main className="pt-28 pb-8">
       <section className="max-w-4xl mx-auto px-6">
-        <p className="text-xs font-bold uppercase tracking-[0.2em] grad-text">For Investors</p>
-        <h1 className="text-3xl md:text-5xl font-black tracking-tight mt-2">
-          Backing a <span className="grad-text">security-first studio</span> for Africa
+        <p className="mono text-[11px] font-semibold uppercase tracking-[0.25em] grad-text flex items-center gap-2.5">
+          <span className="inline-block w-5 h-px" style={{ background: 'currentColor', opacity: 0.6 }} />
+          For Investors
+        </p>
+        <h1 className="text-3xl md:text-5xl font-bold tracking-tight mt-4">
+          Backing a <span className="grad-text">security-first group</span> for Africa
         </h1>
-        <p className="text-white/55 mt-5 max-w-2xl leading-relaxed">
+        <p className="text-white/55 mt-5 max-w-2xl leading-relaxed prose-justify">
           FendAm Technology builds and ships multiple products from one security-first foundation. Our flagship,
           FendAm Learn, is live and generating revenue, while our fintech-security and consumer-safety products
           are in active development. We're open to conversations with mission-aligned investors and partners.
         </p>
 
         <div className="flex flex-wrap gap-3 mt-8">
-          <a href={mailto('Investor enquiry — FendAm Technology')} className="px-6 py-3 rounded-xl text-sm font-bold text-[#060b18]"
+          <a href={mailto('Investor enquiry: FendAm Technology')} className="px-6 py-3 rounded-xl text-sm font-bold text-[#060b18]"
             style={{ background: '#1FE0E0' }}>
             Request the data room
           </a>
@@ -70,7 +73,7 @@ export default function Investors() {
                       View deck
                     </a>
                   ) : (
-                    <a href={mailto(`Deck request — ${p.name}`)} className="text-sm font-semibold px-4 py-2 rounded-lg text-white/85" style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)' }}>
+                    <a href={mailto(`Deck request: ${p.name}`)} className="text-sm font-semibold px-4 py-2 rounded-lg text-white/85" style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)' }}>
                       Request deck
                     </a>
                   )}
@@ -85,7 +88,7 @@ export default function Investors() {
         <div className="rounded-3xl p-10 text-center" style={{ background: 'rgba(31,224,224,0.06)', border: '1px solid rgba(255,255,255,0.1)' }}>
           <h2 className="text-2xl font-black">Let's talk</h2>
           <p className="text-white/55 mt-2">Reach the founder directly.</p>
-          <a href={mailto('Investor enquiry — FendAm Technology')} className="inline-block mt-6 px-6 py-3 rounded-xl text-sm font-bold text-[#060b18]"
+          <a href={mailto('Investor enquiry: FendAm Technology')} className="inline-block mt-6 px-6 py-3 rounded-xl text-sm font-bold text-[#060b18]"
             style={{ background: '#1FE0E0' }}>
             {CONTACT.email}
           </a>

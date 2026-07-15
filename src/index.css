@@ -35,7 +35,23 @@ body::after {
 h1, h2, h3, .display {
   font-family: var(--font-display);
   letter-spacing: -0.02em;
+  text-wrap: balance;
 }
+
+/* monospace technical label (Palantir-style eyebrows) */
+.mono {
+  font-family: ui-monospace, 'SF Mono', 'JetBrains Mono', 'Roboto Mono', Menlo, monospace;
+  font-feature-settings: 'tnum' 1;
+}
+
+/* justified long-form body, no word-break hyphenation */
+.prose-justify {
+  text-align: justify;
+  hyphens: none;
+  -webkit-hyphens: none;
+  text-wrap: pretty;
+}
+@media (max-width: 640px) { .prose-justify { text-align: left; } }
 
 @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes floaty { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
@@ -78,7 +94,7 @@ h1, h2, h3, .display {
   border: 1px solid rgba(31,224,224,0.22);
 }
 
-/* buttons — solid cyan */
+/* buttons: solid cyan */
 .btn-primary {
   background: var(--cyan);
   color: #060b18; font-weight: 700;

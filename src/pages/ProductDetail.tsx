@@ -41,10 +41,10 @@ export default function ProductDetail() {
             </span>
           </div>
 
-          <p className="text-xs font-semibold uppercase tracking-wider mt-5" style={{ color: p.accent }}>{p.domain}</p>
-          <h1 className="text-3xl md:text-5xl font-black tracking-tight mt-1">{p.name}</h1>
+          <p className="mono text-[11px] font-semibold uppercase tracking-[0.2em] mt-5" style={{ color: p.accent }}>{p.domain}</p>
+          <h1 className="text-3xl md:text-5xl font-bold tracking-tight mt-2">{p.name}</h1>
           <p className="text-lg text-white/55 mt-3">{p.tagline}</p>
-          <p className="text-white/60 mt-5 max-w-2xl leading-relaxed">{p.summary}</p>
+          <p className="text-white/60 mt-5 max-w-2xl leading-relaxed prose-justify">{p.summary}</p>
 
           <div className="flex flex-wrap gap-3 mt-7">
             {isLive && p.href && (
@@ -59,7 +59,7 @@ export default function ProductDetail() {
                 Investor information
               </Link>
             )}
-            <a href={`mailto:${CONTACT.email}?subject=${encodeURIComponent(p.name + ' — enquiry')}`}
+            <a href={`mailto:${CONTACT.email}?subject=${encodeURIComponent(p.name + ': enquiry')}`}
               className="px-6 py-3 rounded-xl text-sm font-semibold text-white/80"
               style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.12)' }}>
               Get in touch
@@ -114,7 +114,7 @@ function Panel({ title, children }: { title: string; children: React.ReactNode }
   return (
     <div className="rounded-2xl p-6 md:p-8" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)' }}>
       <h2 className="font-bold text-white mb-2">{title}</h2>
-      <p className="text-sm text-white/55 leading-relaxed">{children}</p>
+      <p className="text-sm text-white/55 leading-relaxed prose-justify">{children}</p>
     </div>
   )
 }
