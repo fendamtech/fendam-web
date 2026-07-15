@@ -21,6 +21,7 @@ const LINKS = [
   { label: 'Divisions', to: '/#divisions' },
   { label: 'Products', to: '/#products' },
   { label: 'Company', to: '/#company' },
+  { label: 'Careers', to: '/careers' },
   { label: 'Investors', to: '/investors' },
 ]
 
@@ -105,6 +106,7 @@ export function Footer() {
             <li><a href="/#divisions" className="hover:text-white">Divisions</a></li>
             <li><a href="/#products" className="hover:text-white">Products</a></li>
             <li><a href="/#company" className="hover:text-white">Company</a></li>
+            <li><Link to="/careers" className="hover:text-white">Careers</Link></li>
             <li><Link to="/investors" className="hover:text-white">For Investors</Link></li>
           </ul>
         </div>

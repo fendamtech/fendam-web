@@ -166,3 +166,19 @@ export const DIVISIONS: Division[] = [
 
 // Real clients we work with
 export const CLIENTS = ['Hospitable Homecare', 'Global Edge Tech']
+
+// What we hire for, mapped to the divisions (categories, not fixed listings)
+export const HIRING = [
+  { division: 'FendAm Security', icon: '/icon-hunt2-CofthtFP.png', roles: ['Security analysts', 'Penetration testers', 'SOC / blue-team engineers', 'Compliance specialists'] },
+  { division: 'FendAm AI', icon: '/icon-terminal2-CUb_aLPr.png', roles: ['ML / data engineers', 'Software developers', 'Data scientists', 'Product engineers'] },
+  { division: 'FendAm Learn', icon: '/icon-cert-DD4R6xej.png', roles: ['Instructors & mentors', 'Curriculum developers', 'Community managers', 'Student success leads'] },
+  { division: 'FendAm Digital', icon: '/icon-mobile-C9r5lP8j.png', roles: ['Product & brand designers', 'Web developers', 'Content & social managers', 'Project managers'] },
+]
+
+// Why work here
+export const CULTURE = [
+  { title: 'Real ownership', desc: 'Small team, real responsibility. You ship work that reaches clients and users, not tickets that disappear into a backlog.' },
+  { title: 'Learn constantly', desc: 'We are a security and education company. Growth is the job. You get access to our own training and mentorship as you go.' },
+  { title: 'Remote-friendly', desc: 'We care about output, not seat time. Work from wherever you do your best thinking, with clear goals and real support.' },
+  { title: 'Mission that matters', desc: 'Everything we build makes African organisations and people safer online. The work is hard and it counts.' },
+]
