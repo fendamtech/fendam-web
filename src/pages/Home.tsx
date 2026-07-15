@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { PRODUCTS, STATUS_META, SERVICES, CLIENTS, CONTACT, productBySlug, type Product } from '../data'
+import { PRODUCTS, STATUS_META, DIVISIONS, CLIENTS, CONTACT, type Product, type Division } from '../data'
 import { Reveal } from '../components/Reveal'
 
 export default function Home() {
@@ -7,11 +7,10 @@ export default function Home() {
     <main className="pt-16">
       <Hero />
       <Clients />
-      <Services />
-      <Flagship />
+      <WhoWeAre />
+      <Divisions />
       <Products />
-      <Company />
-      <StatsBand />
+      <Principles />
       <CTA />
     </main>
   )
@@ -37,18 +36,19 @@ function Hero() {
           <span className="text-white/75">FendAm Learn is live · first cohort August 2026</span>
         </div>
 
-        <h1 className="fade-up text-[2.75rem] leading-[1.02] sm:text-6xl md:text-7xl font-bold tracking-tight" style={{ animationDelay: '0.05s' }}>
-          Security, AI and fintech<br />
+        <h1 className="fade-up text-[2.7rem] leading-[1.03] sm:text-6xl md:text-7xl font-bold tracking-tight" style={{ animationDelay: '0.05s' }}>
+          Building the technology<br />
           <span className="grad-text">Africa can trust.</span>
         </h1>
 
-        <p className="fade-up max-w-xl mx-auto mt-7 text-base sm:text-lg text-white/60 leading-relaxed" style={{ animationDelay: '0.12s' }}>
-          FendAm Technology is a full-spectrum, security-first studio. We build products, secure
-          organisations, and grow the talent the continent needs to defend itself.
+        <p className="fade-up max-w-2xl mx-auto mt-7 text-base sm:text-lg text-white/60 leading-relaxed" style={{ animationDelay: '0.12s' }}>
+          FendAm Technology is a diversified, security-first group operating across four divisions —
+          security, applied AI, education and digital. We build and run our own products, and bring
+          that operator’s edge to every client we serve.
         </p>
 
         <div className="fade-up flex flex-wrap items-center justify-center gap-3 mt-10" style={{ animationDelay: '0.18s' }}>
-          <a href="#products" className="px-6 py-3.5 rounded-xl text-sm btn-primary">Explore our products</a>
+          <a href="#divisions" className="px-6 py-3.5 rounded-xl text-sm btn-primary">Explore the group</a>
           <Link to="/investors" className="px-6 py-3.5 rounded-xl text-sm font-semibold text-white/85 btn-ghost">For investors →</Link>
         </div>
       </div>
@@ -62,7 +62,7 @@ function Clients() {
     <section className="border-y border-white/[0.06] py-8" style={{ background: 'rgba(255,255,255,0.015)' }}>
       <div className="max-w-5xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-center gap-x-12 gap-y-4">
         <span className="text-xs uppercase tracking-[0.2em] text-white/35">Trusted by</span>
-        <div className="flex items-center gap-10">
+        <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-2">
           {CLIENTS.map((c) => (
             <span key={c} className="text-base md:text-lg font-semibold text-white/55" style={{ fontFamily: 'var(--font-display)' }}>{c}</span>
           ))}
@@ -72,56 +72,112 @@ function Clients() {
   )
 }
 
-/* ─── Featured flagship ────────────────────────────────────────────────── */
-function Flagship() {
-  const p = productBySlug('fendam-learn')!
+/* ─── Who we are ───────────────────────────────────────────────────────── */
+function WhoWeAre() {
+  const pillars = [
+    { k: 'Operators, not just advisors', d: 'We build, ship and run our own products — so our advice is grounded in what actually works.' },
+    { k: 'Security in everything', d: 'Every division answers to the same security standard our consulting team sets for clients.' },
+    { k: 'Built for African realities', d: 'Local fraud, mobile-first users, real bandwidth and cost constraints — designed in from day one.' },
+  ]
   return (
-    <section className="max-w-6xl mx-auto px-6 pt-28">
+    <section id="company" className="max-w-6xl mx-auto px-6 pt-28 scroll-mt-24">
       <Reveal>
-        <div className="rounded-3xl overflow-hidden card p-0">
-          <div className="grid md:grid-cols-2">
-            {/* copy */}
-            <div className="p-9 md:p-12 flex flex-col justify-center">
-              <span className="inline-flex items-center gap-1.5 text-[11px] font-bold px-2.5 py-1 rounded-full w-fit"
-                style={{ color: '#10b981', background: 'rgba(16,185,129,0.14)' }}>
-                <span className="w-1.5 h-1.5 rounded-full" style={{ background: '#10b981' }} /> LIVE FLAGSHIP
-              </span>
-              <h2 className="text-3xl md:text-4xl font-bold mt-4">FendAm Learn</h2>
-              <p className="text-white/60 mt-3 leading-relaxed">{p.summary}</p>
-              <div className="grid grid-cols-3 gap-3 mt-7">
-                {[['12wk', 'Structured track'], ['Sec+', 'Exam-aligned'], ['Live', 'Mentorship']].map(([a, b]) => (
-                  <div key={b}>
-                    <div className="text-xl font-bold grad-text">{a}</div>
-                    <div className="text-[11px] text-white/45 mt-0.5">{b}</div>
-                  </div>
-                ))}
-              </div>
-              <div className="flex flex-wrap gap-3 mt-8">
-                <a href={p.href} target="_blank" rel="noopener" className="px-5 py-3 rounded-xl text-sm btn-primary">Visit FendAm Learn →</a>
-                <Link to={`/products/${p.slug}`} className="px-5 py-3 rounded-xl text-sm font-semibold text-white/85 btn-ghost">Read more</Link>
-              </div>
-            </div>
-            {/* visual */}
-            <div className="relative min-h-[280px] md:min-h-full overflow-hidden">
-              <img src={p.image} alt="" className="absolute inset-0 w-full h-full object-cover opacity-60" />
-              <div className="absolute inset-0" style={{ background: 'linear-gradient(90deg, #0a1428 0%, transparent 40%), radial-gradient(circle at 70% 40%, rgba(31,224,224,0.28), transparent 55%)' }} />
-              <img src={p.icon} alt="" className="floaty absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 object-contain drop-shadow-2xl" />
-            </div>
+        <div className="grid md:grid-cols-2 gap-10 items-start">
+          <div>
+            <p className="text-xs font-bold uppercase tracking-[0.22em] grad-text">Who we are</p>
+            <h2 className="text-3xl md:text-4xl font-bold mt-3 tracking-tight leading-tight">A diversified technology group, built security-first.</h2>
           </div>
+          <p className="text-white/60 leading-relaxed md:pt-10">
+            FendAm Technology operates across four divisions — security, AI, education and digital. We don’t
+            just consult; we build, ship and run our own products, and bring that operator’s mindset to every
+            engagement. One team, one standard, applied wherever the work takes us.
+          </p>
         </div>
       </Reveal>
+      <div className="grid gap-4 md:grid-cols-3 mt-12">
+        {pillars.map((p, i) => (
+          <Reveal key={p.k} delay={i * 80}>
+            <div className="rounded-2xl p-6 card h-full">
+              <h3 className="font-bold text-white">{p.k}</h3>
+              <p className="text-sm text-white/50 mt-2 leading-relaxed">{p.d}</p>
+            </div>
+          </Reveal>
+        ))}
+      </div>
     </section>
   )
 }
 
-/* ─── Portfolio ────────────────────────────────────────────────────────── */
+/* ─── Divisions ────────────────────────────────────────────────────────── */
+function Divisions() {
+  return (
+    <section id="divisions" className="max-w-6xl mx-auto px-6 pt-28 scroll-mt-24">
+      <Reveal><SectionHead eyebrow="Divisions" title="Four divisions, one security standard" sub="Each division stands on its own — and reinforces the rest. Together they cover the full spectrum of what a modern African organisation needs." /></Reveal>
+      <div className="mt-16 space-y-16 md:space-y-24">
+        {DIVISIONS.map((d, i) => <DivisionRow key={d.id} d={d} flip={i % 2 === 1} index={i} />)}
+      </div>
+    </section>
+  )
+}
+
+function DivisionRow({ d, flip, index }: { d: Division; flip: boolean; index: number }) {
+  return (
+    <Reveal>
+      <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+        {/* copy */}
+        <div className={flip ? 'md:order-2' : ''}>
+          <div className="flex items-center gap-3">
+            <div className="w-11 h-11 rounded-xl flex items-center justify-center hair">
+              <img src={d.icon} alt="" className="w-6 h-6 object-contain" />
+            </div>
+            <span className="text-[11px] font-bold uppercase tracking-wider" style={{ color: d.accent }}>{`0${index + 1} · ${d.kicker}`}</span>
+          </div>
+          <h3 className="text-2xl md:text-3xl font-bold mt-4">{d.name}</h3>
+          <p className="text-white/60 mt-4 leading-relaxed">{d.lead}</p>
+          <div className="grid grid-cols-2 gap-x-6 gap-y-2.5 mt-6">
+            {d.capabilities.map((c) => (
+              <div key={c} className="flex items-start gap-2">
+                <span className="mt-[7px] w-1.5 h-1.5 rounded-full shrink-0" style={{ background: d.accent }} />
+                <span className="text-sm text-white/55 leading-snug">{c}</span>
+              </div>
+            ))}
+          </div>
+          {d.link && (
+            d.link.external ? (
+              <a href={d.link.to} target="_blank" rel="noopener" className="inline-flex items-center gap-1.5 mt-6 text-sm font-semibold" style={{ color: d.accent }}>
+                {d.link.label}
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+              </a>
+            ) : (
+              <Link to={d.link.to} className="inline-flex items-center gap-1.5 mt-6 text-sm font-semibold" style={{ color: d.accent }}>
+                {d.link.label}
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+              </Link>
+            )
+          )}
+        </div>
+
+        {/* visual */}
+        <div className={flip ? 'md:order-1' : ''}>
+          <div className="relative rounded-3xl overflow-hidden aspect-[4/3] card p-0">
+            <img src={d.image} alt="" className="absolute inset-0 w-full h-full object-cover opacity-50" />
+            <div className="absolute inset-0" style={{ background: `radial-gradient(circle at 60% 40%, ${d.accent}33, transparent 60%), linear-gradient(180deg, transparent, rgba(6,11,24,0.7))` }} />
+            <div className="absolute inset-0 grid-bg opacity-20" />
+            <img src={d.icon} alt="" className="floaty absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 object-contain drop-shadow-2xl" />
+          </div>
+        </div>
+      </div>
+    </Reveal>
+  )
+}
+
+/* ─── Products ─────────────────────────────────────────────────────────── */
 function Products() {
-  const rest = PRODUCTS.filter((p) => p.slug !== 'fendam-learn')
   return (
     <section id="products" className="max-w-6xl mx-auto px-6 pt-28 scroll-mt-24">
-      <Reveal><SectionHead eyebrow="Products" title="More in the studio" sub="Alongside FendAm Learn, we're building products that tackle Africa's hardest security problems." /></Reveal>
-      <div className="grid gap-5 md:grid-cols-2 mt-12">
-        {rest.map((p, i) => (
+      <Reveal><SectionHead eyebrow="Products" title="What the group ships" sub="Our divisions don’t just serve clients — they build products. Here’s what we’ve put into the world." /></Reveal>
+      <div className="grid gap-5 md:grid-cols-3 mt-12">
+        {PRODUCTS.map((p, i) => (
           <Reveal key={p.slug} delay={i * 90}><ProductCard p={p} /></Reveal>
         ))}
       </div>
@@ -158,42 +214,20 @@ function ProductCard({ p }: { p: Product }) {
   )
 }
 
-/* ─── Services ─────────────────────────────────────────────────────────── */
-function Services() {
-  return (
-    <section id="services" className="max-w-6xl mx-auto px-6 pt-28 scroll-mt-24">
-      <Reveal><SectionHead eyebrow="Services" title="The full spectrum of what we do" sub="From offensive security to AI engineering and brand — one security-first team behind all of it." /></Reveal>
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 mt-12">
-        {SERVICES.map((c, i) => (
-          <Reveal key={c.title} delay={i * 70}>
-            <div className="rounded-2xl p-6 card h-full">
-              <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 hair">
-                <img src={c.icon} alt="" className="w-7 h-7 object-contain" />
-              </div>
-              <h3 className="font-bold text-white">{c.title}</h3>
-              <p className="text-sm text-white/50 mt-2 leading-relaxed">{c.desc}</p>
-            </div>
-          </Reveal>
-        ))}
-      </div>
-    </section>
-  )
-}
-
-/* ─── Company ──────────────────────────────────────────────────────────── */
-function Company() {
+/* ─── Principles ───────────────────────────────────────────────────────── */
+function Principles() {
   const steps = [
     { n: '01', t: 'Local by design', d: 'We build for African realities — the fraud, the devices, the data costs, the threat landscape — not a Western template.' },
     { n: '02', t: 'Security at the core', d: 'Every engagement starts from a security mindset. It is our heritage and our unfair advantage.' },
-    { n: '03', t: 'Talent as a product', d: 'FendAm Learn grows the very skills the continent — and our own products — need.' },
+    { n: '03', t: 'One standard, everywhere', d: 'Whether we’re teaching, building or defending, the bar is the same — the one our security team sets.' },
   ]
   return (
-    <section id="company" className="relative pt-28 scroll-mt-24 overflow-hidden">
+    <section className="relative pt-28 overflow-hidden">
       <div className="pointer-events-none absolute inset-0 -z-10">
-        <img src="/graphic-cyberpunkcity-C_oqTtHT.jpg" alt="" className="absolute inset-0 w-full h-full object-cover opacity-[0.06]" />
+        <img src="/graphic-serverroom-898uPS_c.jpg" alt="" className="absolute inset-0 w-full h-full object-cover opacity-[0.06]" />
       </div>
       <div className="max-w-6xl mx-auto px-6">
-        <Reveal><SectionHead eyebrow="Company" title="A studio, not a single app" sub="FendAm Technology builds products, secures organisations, and grows talent under one security-first roof." /></Reveal>
+        <Reveal><SectionHead eyebrow="How we operate" title="The standard behind everything" /></Reveal>
         <div className="grid gap-5 md:grid-cols-3 mt-12">
           {steps.map((s, i) => (
             <Reveal key={s.t} delay={i * 90}>
@@ -210,32 +244,6 @@ function Company() {
   )
 }
 
-/* ─── Stats band ───────────────────────────────────────────────────────── */
-function StatsBand() {
-  const stats = [
-    { v: '3', l: 'Products in the portfolio' },
-    { v: '12wk', l: 'Flagship bootcamp' },
-    { v: '2026', l: 'First paid cohort' },
-    { v: '100%', l: 'Built for Africa' },
-  ]
-  return (
-    <section className="max-w-6xl mx-auto px-6 pt-28">
-      <Reveal>
-        <div className="rounded-3xl p-10 md:p-12 hair">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            {stats.map((s) => (
-              <div key={s.l}>
-                <div className="text-4xl md:text-5xl font-bold grad-text">{s.v}</div>
-                <div className="text-xs text-white/50 mt-2">{s.l}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </Reveal>
-    </section>
-  )
-}
-
 /* ─── CTA ──────────────────────────────────────────────────────────────── */
 function CTA() {
   return (
@@ -246,8 +254,8 @@ function CTA() {
             <div className="absolute inset-0 grid-bg opacity-30" />
             <div className="absolute inset-0" style={{ background: 'radial-gradient(700px 320px at 50% 0%, rgba(31,224,224,0.16), transparent 60%), radial-gradient(500px 320px at 82% 100%, rgba(157,123,255,0.14), transparent 60%)' }} />
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold">Let's build something secure together</h2>
-          <p className="text-white/60 mt-4 max-w-xl mx-auto">Partnerships, pilots, press, or joining the team — we'd love to hear from you.</p>
+          <h2 className="text-3xl md:text-4xl font-bold">Work with the group</h2>
+          <p className="text-white/60 mt-4 max-w-xl mx-auto">A security assessment, a product build, training for your team, or a partnership — start a conversation.</p>
           <div className="flex flex-wrap items-center justify-center gap-3 mt-8">
             <a href={`mailto:${CONTACT.email}`} className="px-6 py-3.5 rounded-xl text-sm btn-primary">{CONTACT.email}</a>
             <Link to="/investors" className="px-6 py-3.5 rounded-xl text-sm font-semibold text-white/85 btn-ghost">Investor information</Link>

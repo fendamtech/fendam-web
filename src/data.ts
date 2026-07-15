@@ -106,32 +106,61 @@ export const CONTACT = {
   learn: 'https://learn.fendamtech.com',
 }
 
-// Services — the full spectrum of what FendAm does for clients
-export const SERVICES = [
+// Divisions — the operating arms of the group, each with real substance
+export type Division = {
+  id: string
+  name: string
+  kicker: string
+  accent: string
+  icon: string
+  image: string
+  lead: string
+  capabilities: string[]
+  link?: { label: string; to: string; external?: boolean }
+}
+
+export const DIVISIONS: Division[] = [
   {
+    id: 'security',
+    name: 'FendAm Security',
+    kicker: 'Offensive & Defensive Security',
+    accent: '#1FE0E0',
     icon: '/icon-hunt2-CofthtFP.png',
-    title: 'Security consulting & pentesting',
-    desc: 'Penetration testing, security assessments and red-teaming that find the gaps before attackers do.',
+    image: '/graphic-hud-D3uRmf43.jpg',
+    lead: 'Our founding discipline. FendAm Security helps banks, fintechs and growing companies find and fix weaknesses before attackers do. We run penetration tests, red-team engagements and full security assessments, then stay on as trusted advisors — hardening systems, preparing teams for incidents, and keeping organisations compliant with Nigeria’s Data Protection Act. Every other division is built on the standards this team sets.',
+    capabilities: ['Penetration testing & red-teaming', 'Security assessments & audits', 'Incident readiness & response', 'NDPA & data-protection compliance'],
   },
   {
-    icon: '/icon-cert-DD4R6xej.png',
-    title: 'Corporate & team training',
-    desc: 'Hands-on cybersecurity training for organisations, teams and institutions — beyond the individual bootcamp.',
-  },
-  {
+    id: 'ai',
+    name: 'FendAm AI',
+    kicker: 'Applied AI & Software Engineering',
+    accent: '#9D7BFF',
     icon: '/icon-terminal2-CUb_aLPr.png',
-    title: 'AI & software development',
-    desc: 'The engineering arm behind our products — custom AI models and software built for real-world constraints.',
+    image: '/graphic-mesh-JHfNOjxi.jpg',
+    lead: 'The engineering core of the group. FendAm AI builds the models and software the rest of the company runs on — starting with FraudNet AI, our fraud-detection engine trained on African transaction patterns. We also take on select client builds: risk systems, data pipelines and custom software designed for real-world constraints like low bandwidth and mobile-first users.',
+    capabilities: ['Fraud & risk modelling', 'Custom AI / ML systems', 'Data engineering & pipelines', 'Product & software development'],
+    link: { label: 'See FraudNet AI', to: '/products/fraudnet-ai' },
   },
   {
-    icon: '/icon-privacy-zSDa0ZRK.png',
-    title: 'Research & advisory',
-    desc: 'Threat research, security advisory and data-protection compliance (NDPA) for organisations that handle sensitive data.',
+    id: 'learn',
+    name: 'FendAm Learn',
+    kicker: 'Cybersecurity Education & Training',
+    accent: '#10b981',
+    icon: '/icon-cert-DD4R6xej.png',
+    image: '/graphic-hexgrid-Cn_x5Oh3.jpg',
+    lead: 'Talent is the continent’s real bottleneck, so we treat it as a product. FendAm Learn is a hands-on cybersecurity academy that takes beginners to job-ready in twelve weeks — interactive labs, live mentorship and a direct path to CompTIA Security+. We also deliver private, tailored training to organisations that need to upskill their own teams.',
+    capabilities: ['12-week Security Foundations bootcamp', 'Hands-on labs & live mentorship', 'Corporate & team training', 'Certification & career support'],
+    link: { label: 'Visit FendAm Learn', to: 'https://learn.fendamtech.com', external: true },
   },
   {
+    id: 'digital',
+    name: 'FendAm Digital',
+    kicker: 'Brand & Digital Management',
+    accent: '#3B82F6',
     icon: '/icon-mobile-C9r5lP8j.png',
-    title: 'Brand & digital management',
-    desc: 'End-to-end digital presence — from brand and web to the systems that keep it secure and running.',
+    image: '/graphic-cyberpunkcity-C_oqTtHT.jpg',
+    lead: 'A full-service digital arm for organisations that want their brand built and their presence secured in one place. We handle brand, web and digital management end-to-end — then wrap it in the same security standards the rest of the group lives by, so clients never have to choose between looking good and being safe.',
+    capabilities: ['Brand & visual identity', 'Web design & development', 'Digital & social management', 'Secure hosting & maintenance'],
   },
 ]
 
