@@ -106,26 +106,34 @@ export const CONTACT = {
   learn: 'https://learn.fendamtech.com',
 }
 
-// Capability pillars for the "what we do" section
-export const CAPABILITIES = [
+// Services — the full spectrum of what FendAm does for clients
+export const SERVICES = [
   {
     icon: '/icon-hunt2-CofthtFP.png',
-    title: 'Offensive security',
-    desc: 'We think like attackers first — the fastest way to build things that hold up in the real world.',
-  },
-  {
-    icon: '/icon-radar-Dsc-YKit.png',
-    title: 'Applied AI',
-    desc: 'Models trained on local data to catch fraud and threats that generic tools miss.',
-  },
-  {
-    icon: '/icon-wallet-BV4ABSMj.png',
-    title: 'Fintech protection',
-    desc: 'Security and anti-fraud infrastructure purpose-built for African payment rails.',
+    title: 'Security consulting & pentesting',
+    desc: 'Penetration testing, security assessments and red-teaming that find the gaps before attackers do.',
   },
   {
     icon: '/icon-cert-DD4R6xej.png',
-    title: 'Talent development',
-    desc: 'We grow the cybersecurity workforce the continent needs — starting with FendAm Learn.',
+    title: 'Corporate & team training',
+    desc: 'Hands-on cybersecurity training for organisations, teams and institutions — beyond the individual bootcamp.',
+  },
+  {
+    icon: '/icon-terminal2-CUb_aLPr.png',
+    title: 'AI & software development',
+    desc: 'The engineering arm behind our products — custom AI models and software built for real-world constraints.',
+  },
+  {
+    icon: '/icon-privacy-zSDa0ZRK.png',
+    title: 'Research & advisory',
+    desc: 'Threat research, security advisory and data-protection compliance (NDPA) for organisations that handle sensitive data.',
+  },
+  {
+    icon: '/icon-mobile-C9r5lP8j.png',
+    title: 'Brand & digital management',
+    desc: 'End-to-end digital presence — from brand and web to the systems that keep it secure and running.',
   },
 ]
+
+// Real clients we work with
+export const CLIENTS = ['Hospitable Homecare', 'Global Edge Tech']

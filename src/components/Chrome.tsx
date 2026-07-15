@@ -24,10 +24,10 @@ export function ScrollTop() {
 }
 
 const LINKS = [
+  { label: 'Services', to: '/#services' },
   { label: 'Products', to: '/#products' },
-  { label: 'About', to: '/#about' },
+  { label: 'Company', to: '/#company' },
   { label: 'Investors', to: '/investors' },
-  { label: 'Contact', to: '/#contact' },
 ]
 
 export function Nav() {
@@ -108,8 +108,9 @@ export function Footer() {
         <div>
           <p className="text-xs font-bold uppercase tracking-wider text-white/40 mb-3">Company</p>
           <ul className="space-y-2 text-sm text-white/60">
+            <li><a href="/#services" className="hover:text-white">Services</a></li>
             <li><a href="/#products" className="hover:text-white">Products</a></li>
-            <li><a href="/#about" className="hover:text-white">About</a></li>
+            <li><a href="/#company" className="hover:text-white">Company</a></li>
             <li><Link to="/investors" className="hover:text-white">For Investors</Link></li>
           </ul>
         </div>

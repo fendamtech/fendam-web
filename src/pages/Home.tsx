@@ -1,16 +1,16 @@
 import { Link } from 'react-router-dom'
-import { PRODUCTS, STATUS_META, CAPABILITIES, CONTACT, productBySlug, type Product } from '../data'
+import { PRODUCTS, STATUS_META, SERVICES, CLIENTS, CONTACT, productBySlug, type Product } from '../data'
 import { Reveal } from '../components/Reveal'
 
 export default function Home() {
   return (
     <main className="pt-16">
       <Hero />
-      <Marquee />
+      <Clients />
+      <Services />
       <Flagship />
       <Products />
-      <Capabilities />
-      <Approach />
+      <Company />
       <StatsBand />
       <CTA />
     </main>
@@ -43,8 +43,8 @@ function Hero() {
         </h1>
 
         <p className="fade-up max-w-xl mx-auto mt-7 text-base sm:text-lg text-white/60 leading-relaxed" style={{ animationDelay: '0.12s' }}>
-          FendAm Technology is a security-first product studio. We build products that solve real
-          African problems — and train the talent the continent needs to defend itself.
+          FendAm Technology is a full-spectrum, security-first studio. We build products, secure
+          organisations, and grow the talent the continent needs to defend itself.
         </p>
 
         <div className="fade-up flex flex-wrap items-center justify-center gap-3 mt-10" style={{ animationDelay: '0.18s' }}>
@@ -56,19 +56,15 @@ function Hero() {
   )
 }
 
-/* ─── Domain marquee ───────────────────────────────────────────────────── */
-function Marquee() {
-  const items = ['Cybersecurity Education', 'AI Fraud Detection', 'Consumer Safety', 'Fintech Security', 'Threat Intelligence', 'Talent Development']
-  const row = [...items, ...items]
+/* ─── Clients ──────────────────────────────────────────────────────────── */
+function Clients() {
   return (
-    <section className="border-y border-white/[0.06] py-5 overflow-hidden" style={{ background: 'rgba(255,255,255,0.015)' }}>
-      <div className="overflow-hidden" style={{ maskImage: 'linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent)', WebkitMaskImage: 'linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent)' }}>
-        <div className="marquee-track flex gap-10 whitespace-nowrap w-max">
-          {row.map((t, i) => (
-            <span key={i} className="text-sm font-medium text-white/35 flex items-center gap-10">
-              {t}
-              <span className="w-1 h-1 rounded-full bg-white/20" />
-            </span>
+    <section className="border-y border-white/[0.06] py-8" style={{ background: 'rgba(255,255,255,0.015)' }}>
+      <div className="max-w-5xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-center gap-x-12 gap-y-4">
+        <span className="text-xs uppercase tracking-[0.2em] text-white/35">Trusted by</span>
+        <div className="flex items-center gap-10">
+          {CLIENTS.map((c) => (
+            <span key={c} className="text-base md:text-lg font-semibold text-white/55" style={{ fontFamily: 'var(--font-display)' }}>{c}</span>
           ))}
         </div>
       </div>
@@ -120,11 +116,12 @@ function Flagship() {
 
 /* ─── Portfolio ────────────────────────────────────────────────────────── */
 function Products() {
+  const rest = PRODUCTS.filter((p) => p.slug !== 'fendam-learn')
   return (
     <section id="products" className="max-w-6xl mx-auto px-6 pt-28 scroll-mt-24">
-      <Reveal><SectionHead eyebrow="Portfolio" title="What we're building" sub="One live and in market, more on the way — each solving a problem we've seen up close." /></Reveal>
-      <div className="grid gap-5 md:grid-cols-3 mt-12">
-        {PRODUCTS.map((p, i) => (
+      <Reveal><SectionHead eyebrow="Products" title="More in the studio" sub="Alongside FendAm Learn, we're building products that tackle Africa's hardest security problems." /></Reveal>
+      <div className="grid gap-5 md:grid-cols-2 mt-12">
+        {rest.map((p, i) => (
           <Reveal key={p.slug} delay={i * 90}><ProductCard p={p} /></Reveal>
         ))}
       </div>
@@ -161,14 +158,14 @@ function ProductCard({ p }: { p: Product }) {
   )
 }
 
-/* ─── Capabilities ─────────────────────────────────────────────────────── */
-function Capabilities() {
+/* ─── Services ─────────────────────────────────────────────────────────── */
+function Services() {
   return (
-    <section className="max-w-6xl mx-auto px-6 pt-28">
-      <Reveal><SectionHead eyebrow="Capabilities" title="Four disciplines, one security core" sub="Every product we ship draws on the same foundation." /></Reveal>
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 mt-12">
-        {CAPABILITIES.map((c, i) => (
-          <Reveal key={c.title} delay={i * 80}>
+    <section id="services" className="max-w-6xl mx-auto px-6 pt-28 scroll-mt-24">
+      <Reveal><SectionHead eyebrow="Services" title="The full spectrum of what we do" sub="From offensive security to AI engineering and brand — one security-first team behind all of it." /></Reveal>
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 mt-12">
+        {SERVICES.map((c, i) => (
+          <Reveal key={c.title} delay={i * 70}>
             <div className="rounded-2xl p-6 card h-full">
               <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 hair">
                 <img src={c.icon} alt="" className="w-7 h-7 object-contain" />
@@ -183,20 +180,20 @@ function Capabilities() {
   )
 }
 
-/* ─── Approach ─────────────────────────────────────────────────────────── */
-function Approach() {
+/* ─── Company ──────────────────────────────────────────────────────────── */
+function Company() {
   const steps = [
     { n: '01', t: 'Local by design', d: 'We build for African realities — the fraud, the devices, the data costs, the threat landscape — not a Western template.' },
-    { n: '02', t: 'Security at the core', d: 'Every product starts from a security mindset. It is our heritage and our unfair advantage.' },
+    { n: '02', t: 'Security at the core', d: 'Every engagement starts from a security mindset. It is our heritage and our unfair advantage.' },
     { n: '03', t: 'Talent as a product', d: 'FendAm Learn grows the very skills the continent — and our own products — need.' },
   ]
   return (
-    <section id="about" className="relative pt-28 scroll-mt-24 overflow-hidden">
+    <section id="company" className="relative pt-28 scroll-mt-24 overflow-hidden">
       <div className="pointer-events-none absolute inset-0 -z-10">
         <img src="/graphic-cyberpunkcity-C_oqTtHT.jpg" alt="" className="absolute inset-0 w-full h-full object-cover opacity-[0.06]" />
       </div>
       <div className="max-w-6xl mx-auto px-6">
-        <Reveal><SectionHead eyebrow="Our approach" title="A studio, not a single app" sub="FendAm Technology incubates and ships multiple products under one security-first roof." /></Reveal>
+        <Reveal><SectionHead eyebrow="Company" title="A studio, not a single app" sub="FendAm Technology builds products, secures organisations, and grows talent under one security-first roof." /></Reveal>
         <div className="grid gap-5 md:grid-cols-3 mt-12">
           {steps.map((s, i) => (
             <Reveal key={s.t} delay={i * 90}>
